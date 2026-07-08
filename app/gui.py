@@ -10,7 +10,6 @@ def run_gui():
     window.geometry("330x420")
     window.resizable(False, False)
 
-    # رنگ‌ها
     bg = "#1e1e1e"
     fg = "#ffffff"
     accent = "#4fc3f7"
@@ -20,11 +19,9 @@ def run_gui():
 
     window.configure(bg=bg)
 
-    # قاب اصلی
     main_frame = tk.Frame(window, bg=bg)
     main_frame.pack(fill="both", expand=True)
 
-    # ورودی‌ها
     tk.Label(main_frame, text="Number A:", fg=fg, bg=bg, font=("Segoe UI", 12)).grid(row=0, column=0, padx=10, pady=10, sticky="w")
     entry_a = tk.Entry(main_frame, font=("Segoe UI", 14), bg=entry_bg, fg=fg, insertbackground=fg, relief="flat")
     entry_a.grid(row=0, column=1, padx=10, pady=10)
@@ -33,7 +30,6 @@ def run_gui():
     entry_b = tk.Entry(main_frame, font=("Segoe UI", 14), bg=entry_bg, fg=fg, insertbackground=fg, relief="flat")
     entry_b.grid(row=1, column=1, padx=10, pady=10)
 
-    # نتیجه
     result_label = tk.Label(main_frame, text="Result:", fg=accent, bg=bg, font=("Segoe UI", 14, "bold"))
     result_label.grid(row=2, column=0, columnspan=2, pady=20)
 
@@ -72,17 +68,14 @@ def run_gui():
             except ValueError:
                 show_result("Cannot divide by zero")
 
-    # تابع ساخت دکمه با رنگ واقعی
     def make_button(text, command, row, col):
         btn = tk.Label(main_frame, text=text, bg=btn_bg, fg=fg,
                        font=("Segoe UI", 12), width=12, height=2, bd=0)
         btn.grid(row=row, column=col, padx=10, pady=10)
 
-        # هاور
         btn.bind("<Enter>", lambda e: btn.config(bg=btn_hover))
         btn.bind("<Leave>", lambda e: btn.config(bg=btn_bg))
 
-        # کلیک
         btn.bind("<Button-1>", lambda e: command())
 
     make_button("Add", do_add, 3, 0)
